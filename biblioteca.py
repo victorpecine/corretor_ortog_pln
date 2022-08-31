@@ -51,3 +51,24 @@ def gerador_palavras(palavra):
 # def probabilidade(frequencia_palavras, palavra_buscada):
 #     probabilidade_palavra = frequencia_palavras[palavra_buscada] / total_palavras
 #     return probabilidade_palavra
+
+
+def cria_dados_teste(nome_arquivo):
+    lista_palavras_teste = []
+    f =  open(nome_arquivo, 'r', encoding="utf8") 
+    for linha in f:
+        correta, errada = linha.split()
+        lista_palavras_teste.append((correta, errada))
+    f.close()
+    return lista_palavras_teste
+
+
+# def avaliador(lista_palavras_teste):
+#     numero_palavras = len(lista_palavras_teste)
+#     acertos = 0
+#     for correta, errada in lista_palavras_teste:
+#         palavra_corrigida = corretor(errada)
+#         if palavra_corrigida == correta:
+#             acertos += 1
+#     taxa_acerto = acertos / numero_palavras
+#     print('Taxa de acerto: {}'format(taxa_acerto))

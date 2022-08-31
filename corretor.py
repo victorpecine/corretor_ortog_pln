@@ -31,8 +31,28 @@ def corretor(palavra):
 
 palavra_buscada = 'lorem' # lorem 3% de probabilidade
 
-prob = probabilidade(palavra_buscada)
-print(prob)
+# prob = probabilidade(palavra_buscada)
+# print(prob)
 
-correcao = corretor(palavra_buscada)
-print(correcao)
+# correcao = corretor(palavra_buscada)
+# print(correcao)
+
+
+# Teste cria_dados_teste
+
+
+teste = cria_dados_teste('dados/palavras.txt')
+
+
+def avaliador(lista_palavras_teste):
+    numero_palavras = len(lista_palavras_teste)
+    acertos = 0
+    for correta, errada in lista_palavras_teste:
+        palavra_corrigida = corretor(errada)
+        if palavra_corrigida == correta:
+            acertos += 1
+    taxa_acerto = acertos*100 / numero_palavras
+    print('Taxa de acerto: {}% no total de {} palavras'.format(taxa_acerto, numero_palavras))
+
+
+taxa_acertos_teste = avaliador(teste)
