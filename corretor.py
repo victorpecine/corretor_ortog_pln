@@ -1,5 +1,5 @@
 from nltk import word_tokenize
-from biblioteca import tokens_sem_pontuacao, normalizacao
+from biblioteca import *
 
 
 with open('dados/artigo_100_palavras.txt', 'r', encoding="utf8") as f: # f = file
@@ -10,11 +10,11 @@ tokens_texto = word_tokenize(texto_fonte) # Cria token para palavras e símbolos
 
 tokens_alpha = tokens_sem_pontuacao(tokens_texto)
 
-
 tokens_normalizados = normalizacao(tokens_alpha)
 
+tokens_sem_repeticao = set(tokens_normalizados)# Quantidade de palavras sem repetições
 
-# Quantidade de palavras sem repetições
-tokens_sem_repeticao = set(tokens_normalizados)
 
-print(len(tokens_sem_repeticao))
+palavra_teste = 'lgica'
+palavras = gerador_palavras(palavra_teste) # Fatia e coloca cada letra do alfabeto concatenado entre as fatias
+print(len(palavras))
