@@ -2,7 +2,7 @@ from nltk import word_tokenize, FreqDist
 from biblioteca import *
 
 
-with open('dados/artigo_100_palavras.txt', 'r', encoding="utf8") as f: # f = file
+with open('dados/artigos.txt', 'r', encoding="utf8") as f: # f = file
     texto_fonte = f.read()
 
 
@@ -29,7 +29,7 @@ def corretor(palavra):
     return palavra_correta
 
 
-palavra_buscada = 'lógica' # lorem 3% de probabilidade
+palavra_buscada = 'pyodemos'
 
 # prob = probabilidade(palavra_buscada)
 # print(prob)
@@ -60,7 +60,6 @@ def avaliador(lista_palavras_teste):
 
 
 palavra_gerada = gerador_palavras(palavra_buscada)
-print(palavra_gerada)
+# print(palavra_gerada)
 
 text_avaliador = avaliador(teste)
-# print(text_avaliador)

@@ -31,6 +31,7 @@ def gerador_palavras(palavra):
     palavras_geradas = insere_letra(fatias)
     palavras_geradas += deleta_caractere(fatias)
     palavras_geradas += troca_letra(fatias)
+    palavras_geradas += inverte_letra(fatias)
     return palavras_geradas
 
 
@@ -89,4 +90,12 @@ def troca_letra(fatias):
     for E, D in fatias:
         for letra in letras:
             novas_palavras.append(E + letra + D[1:]) # Testa todas as possibilidades
+    return novas_palavras
+
+
+def inverte_letra(fatias):
+    novas_palavras = []
+    for E, D in fatias:
+        if len(D) > 1:
+            novas_palavras.append(E + D[1] + D[0] + D[2:])
     return novas_palavras
