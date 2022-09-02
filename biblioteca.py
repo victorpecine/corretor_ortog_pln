@@ -99,3 +99,10 @@ def inverte_letra(fatias):
         if len(D) > 1:
             novas_palavras.append(E + D[1] + D[0] + D[2:])
     return novas_palavras
+
+
+def gerador_turbinado(palavras_geradas):
+    novas_palavras = []
+    for palavra in palavras_geradas:
+        novas_palavras += gerador_palavras(palavra)
+    return novas_palavras

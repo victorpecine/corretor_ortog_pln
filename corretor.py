@@ -29,7 +29,7 @@ def corretor(palavra):
     return palavra_correta
 
 
-palavra_buscada = 'pyodemos'
+palavra_buscada = 'pyyodemos'
 
 # prob = probabilidade(palavra_buscada)
 # print(prob)
@@ -64,8 +64,10 @@ def avaliador(lista_palavras_teste, vocabulario):
 # taxa_acertos_teste = avaliador(teste)
 
 
-palavra_gerada = gerador_palavras(palavra_buscada)
+# palavra_gerada = gerador_palavras(palavra_buscada)
 # print(palavra_gerada)
+
+palavras_geradas_turbinadas = gerador_turbinado(gerador_palavras(palavra_buscada))
 
 vocabulario = set(tokens_normalizados)
 
