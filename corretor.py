@@ -45,15 +45,20 @@ teste = cria_dados_teste('dados/palavras.txt')
 
 
 # Cálculo da taxa de acerto do corretor
-def avaliador(lista_palavras_teste):
+def avaliador(lista_palavras_teste, vocabulario):
     numero_palavras = len(lista_palavras_teste)
     acertos = 0
+    desconhecidas = 0
     for correta, errada in lista_palavras_teste:
         palavra_corrigida = corretor(errada)
         if palavra_corrigida == correta:
             acertos += 1
+        else:
+            desconhecidas += (correta not in vocabulario)
     taxa_acerto = (acertos / numero_palavras) * 100
-    print('Taxa de acerto: {}% no total de {} palavras'.format(taxa_acerto, numero_palavras))
+    taxa_palavras_desconhecidas = (desconhecidas / numero_palavras) * 100
+    print('Taxa de acerto: {:.2f}% no total de {} palavras'.format(taxa_acerto, numero_palavras))
+    print('Taxa de palavras desconhecidas: {:.2f}% no total de {} palavras'.format(taxa_palavras_desconhecidas, numero_palavras))
 
 
 # taxa_acertos_teste = avaliador(teste)
@@ -62,4 +67,6 @@ def avaliador(lista_palavras_teste):
 palavra_gerada = gerador_palavras(palavra_buscada)
 # print(palavra_gerada)
 
-text_avaliador = avaliador(teste)
+vocabulario = set(tokens_normalizados)
+
+texto_avaliado = avaliador(teste, vocabulario)
