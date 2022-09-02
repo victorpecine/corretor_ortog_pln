@@ -37,12 +37,11 @@ def novo_corretor(palavra):
     for palavra in todas_palavras:
         if palavra in vocabulario:
             possiveis_palavras.append(palavra)
-    print(len(possiveis_palavras))
     palavra_correta = max(possiveis_palavras, key=probabilidade) # A palavra com maior probabilidade será considerada a correção
     return palavra_correta
 
 
-palavra_buscada = 'pyyodemos'
+palavra_buscada = 'pyodemos'
 
 # prob = probabilidade(palavra_buscada)
 # print(prob)
@@ -64,26 +63,17 @@ def avaliador(lista_palavras_teste, vocabulario):
     desconhecidas = 0
     for correta, errada in lista_palavras_teste:
         palavra_corrigida = corretor(errada)
+        desconhecidas += (correta not in vocabulario)
         if palavra_corrigida == correta:
-            acertos += 1
-        else:
-            desconhecidas += (correta not in vocabulario)
+            acertos += 1       
     taxa_acerto = (acertos / numero_palavras) * 100
     taxa_palavras_desconhecidas = (desconhecidas / numero_palavras) * 100
     print('Taxa de acerto: {:.2f}% no total de {} palavras'.format(taxa_acerto, numero_palavras))
     print('Taxa de palavras desconhecidas: {:.2f}% no total de {} palavras'.format(taxa_palavras_desconhecidas, numero_palavras))
 
 
-# taxa_acertos_teste = avaliador(teste)
-
-
-# palavra_gerada = gerador_palavras(palavra_buscada)
-# print(palavra_gerada)
-
 palavras_geradas_turbinado = gerador_turbinado(gerador_palavras(palavra_buscada))
 
 vocabulario = set(tokens_normalizados)
 
-# texto_avaliado = avaliador(teste, vocabulario)
-
-nova_correcao = novo_corretor(palavra_buscada)
+texto_avaliado = avaliador(teste, vocabulario)
