@@ -29,7 +29,8 @@ def gerador_palavras(palavra):
     for i in range(len(palavra) + 1):
         fatias.append((palavra[:i], palavra[i:]))
     palavras_geradas = insere_letra(fatias)
-    palavras_geradas += deleta_caractere(fatias) 
+    palavras_geradas += deleta_caractere(fatias)
+    palavras_geradas += troca_letra(fatias)
     return palavras_geradas
 
 
@@ -79,4 +80,13 @@ def deleta_caractere(fatias):
     novas_palavras = []
     for E, D in fatias:
         novas_palavras.append(E + D[1:])
+    return novas_palavras
+
+
+def troca_letra(fatias):
+    novas_palavras = []
+    letras = 'abcdefghijklmnopqrstuvwxyzàáâãèéêìíîòóôõùúûç'
+    for E, D in fatias:
+        for letra in letras:
+            novas_palavras.append(E + letra + D[1:]) # Testa todas as possibilidades
     return novas_palavras
