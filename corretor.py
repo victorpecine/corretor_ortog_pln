@@ -41,21 +41,6 @@ def novo_corretor(palavra):
     return palavra_correta
 
 
-palavra_buscada = 'pyodemos'
-
-# prob = probabilidade(palavra_buscada)
-# print(prob)
-
-# correcao = corretor(palavra_buscada)
-# print(correcao)
-
-
-# Teste cria_dados_teste
-
-
-teste = cria_dados_teste('dados/palavras.txt')
-
-
 # Cálculo da taxa de acerto do corretor
 def avaliador(lista_palavras_teste, vocabulario):
     numero_palavras = len(lista_palavras_teste)
@@ -72,8 +57,13 @@ def avaliador(lista_palavras_teste, vocabulario):
     print('Taxa de palavras desconhecidas: {:.2f}% no total de {} palavras'.format(taxa_palavras_desconhecidas, numero_palavras))
 
 
+palavra_buscada = 'lóogica'
+
 palavras_geradas_turbinado = gerador_turbinado(gerador_palavras(palavra_buscada))
 
 vocabulario = set(tokens_normalizados)
 
-texto_avaliado = avaliador(teste, vocabulario)
+# texto_avaliado = avaliador(teste, vocabulario)
+
+print(corretor(palavra_buscada))
+print(novo_corretor(palavra_buscada))
