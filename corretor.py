@@ -29,6 +29,19 @@ def corretor(palavra):
     return palavra_correta
 
 
+def novo_corretor(palavra):
+    palavras_geradas = gerador_palavras(palavra.lower())
+    palavras_geradas_turbinado = gerador_turbinado(palavra.lower())
+    todas_palavras = set(palavras_geradas + palavras_geradas_turbinado)
+    possiveis_palavras = [palavra]
+    for palavra in todas_palavras:
+        if palavra in vocabulario:
+            possiveis_palavras.append(palavra)
+    print(len(possiveis_palavras))
+    palavra_correta = max(possiveis_palavras, key=probabilidade) # A palavra com maior probabilidade será considerada a correção
+    return palavra_correta
+
+
 palavra_buscada = 'pyyodemos'
 
 # prob = probabilidade(palavra_buscada)
@@ -67,8 +80,10 @@ def avaliador(lista_palavras_teste, vocabulario):
 # palavra_gerada = gerador_palavras(palavra_buscada)
 # print(palavra_gerada)
 
-palavras_geradas_turbinadas = gerador_turbinado(gerador_palavras(palavra_buscada))
+palavras_geradas_turbinado = gerador_turbinado(gerador_palavras(palavra_buscada))
 
 vocabulario = set(tokens_normalizados)
 
-texto_avaliado = avaliador(teste, vocabulario)
+# texto_avaliado = avaliador(teste, vocabulario)
+
+nova_correcao = novo_corretor(palavra_buscada)
