@@ -28,7 +28,8 @@ def gerador_palavras(palavra):
     fatias = []
     for i in range(len(palavra) + 1):
         fatias.append((palavra[:i], palavra[i:]))
-    palavras_geradas = insere_letra(fatias)  
+    palavras_geradas = insere_letra(fatias)
+    palavras_geradas += deleta_caractere(fatias) 
     return palavras_geradas
 
 
@@ -72,3 +73,10 @@ def cria_dados_teste(nome_arquivo):
 #             acertos += 1
 #     taxa_acerto = acertos / numero_palavras
 #     print('Taxa de acerto: {}'format(taxa_acerto))
+
+
+def deleta_caractere(fatias):
+    novas_palavras = []
+    for E, D in fatias:
+        novas_palavras.append(E + D[1:])
+    return novas_palavras
